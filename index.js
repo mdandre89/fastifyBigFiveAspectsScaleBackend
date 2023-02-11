@@ -9,7 +9,12 @@ fastify.register(require("fastify-mongodb"), {
 
 // Declare a route
 fastify.get('/', function (request, reply) {
-  reply.send({ hello: 'world' })
+  reply.send("Hello World")
+})
+
+// healthcheck
+fastify.get('/healthz', function (request, reply) {
+  reply.code(200).send("Hello World")
 })
 
 fastify.register(require("./routes/results"));
