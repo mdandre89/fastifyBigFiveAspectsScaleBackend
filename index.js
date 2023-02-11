@@ -2,6 +2,11 @@ const fastify = require('fastify')({logger: true})
 const dotenv = require("dotenv");
 dotenv.config();
 
+fastify.register(require('fastify-cors'), {
+  origin: '*',
+  methods: ['GET', 'POST']
+})
+
 fastify.register(require("fastify-mongodb"), {
   forceClose: true,
   url: process.env.MONGO_URL,
